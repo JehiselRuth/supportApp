@@ -1,12 +1,18 @@
 package api.models;
 
+import java.sql.Statement;
+
+import com.mysql.cj.MysqlConnection;
+
+import api.repositories.mysql.MysqlConnexion;
+
 public class Request {
     private String name;
     private int date;
     private String event;
     private String description;
 
-    
+    MysqlConnexion repository = new MysqlConnexion();
 
     
 
@@ -15,6 +21,9 @@ public class Request {
         this.date = date;
         this.event = event;
         this.description = description;
+    }
+
+    public Request() {
     }
 
     public String getName() {
@@ -54,6 +63,21 @@ public class Request {
         return "request [name=" + name + ", date=" + date + ", event=" + event + ", description=" + description + "]";
     }
 
+
+
+    public Request index() {
+        try {
+            Statement statement = repository.conn.createStatement();
+            String sql = "SELECT * FROM db_supporapp.request";
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
+        this.event = "partido champions";
+        this.name = "diego";
+        return this;
+
+    }
   
 
 }
