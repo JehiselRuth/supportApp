@@ -2,8 +2,6 @@ package api.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-
 import api.models.Request;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,9 +16,9 @@ public class RequestController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        Request solicitud = new Request("Diego", 0, "Partido liga", "acreditacion fotografo");
+        Request request = new Request();
        
-        out.println(solicitud);
+        out.println(request.index().getName());
         }
         
     }
